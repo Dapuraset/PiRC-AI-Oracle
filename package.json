@@ -1,0 +1,16 @@
+{
+  "health": {
+    "status": "degraded",
+    "txCount": 1200,
+    "ledger": 9500
+  },
+  "analysis": {
+    "risk": "HIGH",
+    "score": 80,
+    "insight": "⚠️ Network anomaly detected"
+  },
+  "action": {
+    "action": "SWITCH_RPC",
+    "message": "Switching to backup node..."
+  }
+}

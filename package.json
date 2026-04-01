@@ -1,16 +1,14 @@
 {
-  "health": {
-    "status": "degraded",
-    "txCount": 1200,
-    "ledger": 9500
+  "name": "pirc-ai-oracle",
+  "version": "1.0.0",
+  "description": "AI-powered health monitoring for Pi Testnet RPC",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js"
   },
-  "analysis": {
-    "risk": "HIGH",
-    "score": 80,
-    "insight": "⚠️ Network anomaly detected"
-  },
-  "action": {
-    "action": "SWITCH_RPC",
-    "message": "Switching to backup node..."
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
   }
 }

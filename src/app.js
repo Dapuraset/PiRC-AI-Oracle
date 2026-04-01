@@ -1,20 +1,13 @@
 import express from "express";
-import { getPiHealth } from "./services/piHealth.js";
-import { analyzeHealth } from "./oracle/aiOracle.js";
-import { takeAction } from "./engine/actionEngine.js";
+import healthRoute from "./routes/healthRoute.js";
 
 const app = express();
+app.use(express.json());
 
-app.get("/health-check", async (req, res) => {
-  try {
-    const health = await getPiHealth();
-    const analysis = analyzeHealth(health);
-    const action = takeAction(analysis);
+app.use("/api", healthRoute);
 
-    res.json({ health, analysis, action });
-  } catch {
-    res.status(500).json({ error: "Failed to fetch health" });
-  }
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 PiRC AI Oracle running on port ${PORT}`);
 });
-
-export default app;

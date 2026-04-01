@@ -1,4 +1,3 @@
-// services/piHealth.js
 import fetch from "node-fetch";
 
 export async function getPiHealth() {

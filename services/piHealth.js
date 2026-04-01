@@ -1,7 +1,10 @@
 import fetch from "node-fetch";
+import { getCurrentRPC } from "./rpcManager.js";
 
 export async function getPiHealth() {
-  const res = await fetch("https://rpc.testnet.minepi.com", {
+  const rpc = getCurrentRPC();
+
+  const res = await fetch(rpc, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -13,6 +16,5 @@ export async function getPiHealth() {
     })
   });
 
-  const data = await res.json();
-  return data.result || data;
+  return res.json();
 }

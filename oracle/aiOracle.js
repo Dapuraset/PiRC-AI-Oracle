@@ -1,21 +1,11 @@
-// oracle/aiOracle.js
 export function analyzeHealth(health) {
   let riskScore = 0;
   let status = "SAFE";
 
-  if (health.status !== "healthy") {
-    riskScore += 40;
-  }
+  if (health.status !== "healthy") riskScore += 40;
+  if (health.txCount > 1000) riskScore += 30;
+  if (health.ledger < 10000) riskScore += 20;
 
-  if (health.txCount && health.txCount > 1000) {
-    riskScore += 30;
-  }
-
-  if (health.ledger && health.ledger < 10000) {
-    riskScore += 20;
-  }
-
-  // AI-style classification
   if (riskScore > 70) status = "HIGH";
   else if (riskScore > 40) status = "MEDIUM";
 
